@@ -9,7 +9,7 @@ namespace Deliver.Entities
 {
     internal class Order
     {
-        public DateOnly Moment { get; set; }
+        public DateTime Moment { get; set; }
         public OrderStatus Status { get; set; }
         public Client Clt { get; set; }
         public List<OrderItem> Items { get; private set; } = new List<OrderItem>();
@@ -18,19 +18,19 @@ namespace Deliver.Entities
         { 
         }
 
-        public Order(DateOnly moment, OrderStatus status, Client clt)
+        public Order(DateTime moment, OrderStatus status, Client clt)
         {
             Moment = moment;
             Status = status;
             Clt = clt;
         }
 
-        public void AddOrder(OrderItem item)
+        public void AddItem(OrderItem item)
         {
             Items.Add(item);
         }
 
-        public void RemoveOrder(OrderItem item)
+        public void RemoveItem(OrderItem item)
         {
             Items.Remove(item);
         }
@@ -40,7 +40,7 @@ namespace Deliver.Entities
             double sum = 0;
             foreach (OrderItem item in Items)
             {
-                sum = item.SubTotal();
+                sum += item.SubTotal();
             }
             return sum;
         }

@@ -26,7 +26,7 @@ namespace Deliver.Entities
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"{Name} ({Date.ToString("dd/MM/yyyy HH:mm:ss")}) - {Email}");
+            sb.Append($"{Name} ({Date.ToString("dd/MM/yyyy")}) - {Email}");
 
 
             return sb.ToString();
